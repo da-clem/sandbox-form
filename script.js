@@ -52,6 +52,22 @@ var showError = function(field, error) {
   // Add BS 'is-invalid' class to the field
   field.classList.add('is-invalid');
 
+  // If the field is a radio button and part of a group, error all and get the last item in the group
+  if (field.type === 'radio' && field.name) {
+      var group = document.getElementsByName(field.name);
+      if (group.length > 0) {
+          for (var i = 0; i < group.length; i++) {
+              // Only check fields in current form
+              if (group[i].form !== field.form) continue;
+              group[i].classList.add('error');
+          }
+          field = group[group.length - 1];
+      }
+
+
+}
+
+
   // Get filed id or name
   var id = field.id || field.name;
   if (!id) return;
@@ -60,10 +76,25 @@ var showError = function(field, error) {
   var message = field.form.querySelector('.error-message.invalid-feedback#error-for-' + id );
   // If not, create the error message and inject it into the DOM
   if (!message) {
-      message = document.createElement('div');
-      message.className = 'invalid-feedback error-message';
-      message.id = 'error-for-' + id;
-      field.parentNode.insertBefore( message, field.nextSibling );
+    message = document.createElement('div');
+    message.className = 'invalid-feedback error-message';
+    message.id = 'error-for-' + id;
+    field.parentNode.insertBefore( message, field.nextSibling );
+
+    var label;
+    if (field.type === 'radio' || field.type ==='checkbox') {
+        label = field.form.querySelector('label[for="' + id + '"]') || field.parentNode;
+        if (label) {
+            label.parentNode.insertBefore( message, label.nextSibling );
+        }
+    }
+
+    // Otherwise, insert it after the field
+    if (!label) {
+        field.parentNode.insertBefore( message, field.nextSibling );
+    }
+
+
   }
 
   // Add ARIA role to the field
