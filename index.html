@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Recommend minimum -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <title>Page Title</title>
+    <meta name="description" content="A description of the page.">
+    <!-- External resources and stylesheets -->
+      <!-- GOOGLE FONT -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato|Open+Sans">
+      <!-- BOOTSTRAP -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <!-- Stylesheets -->
+    <link href="style.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <!-- Page content -->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+
+          <form action="https://usebasin.com/f/1611da8f6dfb" id="my-form" method="POST" novalidate>
+
+
+            <!-- GENDER -->
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="gender" id="genderM" value="male" required>
+              <label class="form-check-label" for="genderM">
+                Male
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="gender" id="genderF" value="female" required>
+              <label class="form-check-label" for="genderF">
+                Female
+              </label>
+            </div>
+
+            <!-- FIRST NAME -->
+
+            <div class="form-group">
+              <label for="first-name">First Name</label>
+              <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First name" minlength="2" maxlength="20" pattern="^[a-zA-Z]([\w -]*[a-zA-Z])?$" title="Please provide valid input" required>
+              
+            </div>
+
+            <!-- LAST NAME -->
+
+            <div class="form-group">
+              <label for="last-name">Last Name</label>
+              <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last name" minlength="2" maxlength="20" pattern="^[a-zA-Z]([\w -]*[a-zA-Z])?$" title="Please provide valid input" required>
+            </div>
+
+            <!-- EMAIL -->
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" name="email" id="email" placeholder="Email" pattern="^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*(\.\w{2,})+$" title="Please provide valid email"required>
+            </div>
+
+            <!-- DOB -->
+
+            <div class="form-group">
+              <label for="birthday">Birthdays</label>
+              <input type="date" class="form-control" name="birthday" id="birthday" placeholder="Birthday" required>
+            </div>
+
+            <!-- PHONE -->
+
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" class="form-control" name="phone" id="phone" placeholder="Phone" minlength="10" maxlength="10" required>
+            </div>
+
+            <!-- ADDRESS -->
+
+            <div class="form-group">
+              <label for="address">Address</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="postcode">Postcode</label>
+              <input type="number" class="form-control" name="postcode" id="postCode" placeholder="Postcode" minlength="5" maxlength="5" title="Please provide valid postcode"required>
+            </div>
+
+
+            <!-- SELECT -->
+            
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Example select</label>
+              <select class="form-control" id="exampleFormControlSelect1" required>
+                <option value="">None</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+
+            <!-- CHECKBOX -->
+
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="privacy" required>
+              <label class="form-check-label " for="privacy">Privacy</label>
+            </div>
+
+            <!-- TOGGLE -->
+            
+            <div class="form-group">
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="customSwitch1" required>
+                <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
+
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- External scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- Scripts -->
+    <script src="script.js"></script>
+  </body>
+</html>
