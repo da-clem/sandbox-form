@@ -54,21 +54,18 @@ var showError = function(field, error) {
 
   // If the field is a radio button and part of a group, error all and get the last item in the group
   if (field.type === 'radio' && field.name) {
-      var group = document.getElementsByName(field.name);
-      if (group.length > 0) {
-          for (var i = 0; i < group.length; i++) {
-              // Only check fields in current form
-              if (group[i].form !== field.form) continue;
-              group[i].classList.add('error');
-          }
-          field = group[group.length - 1];
+    var group = document.getElementsByName(field.name);
+    if (group.length > 0) {
+      for (var i = 0; i < group.length; i++) {
+        // Only check fields in current form
+        if (group[i].form !== field.form) continue;
+        group[i].classList.add('is-invalid');
       }
+      field = group[group.length - 1];
+    }
+  }
 
-
-}
-
-
-  // Get filed id or name
+  // Get field id or name
   var id = field.id || field.name;
   if (!id) return;
 
@@ -81,20 +78,19 @@ var showError = function(field, error) {
     message.id = 'error-for-' + id;
     field.parentNode.insertBefore( message, field.nextSibling );
 
+    // if radio or checkbox
     var label;
     if (field.type === 'radio' || field.type ==='checkbox') {
-        label = field.form.querySelector('label[for="' + id + '"]') || field.parentNode;
-        if (label) {
-            label.parentNode.insertBefore( message, label.nextSibling );
-        }
+      label = field.form.querySelector('label[for="' + name + '"]') || field.parentNode;
+      if (label) {
+        label.parentNode.insertBefore( message, label.nextSibling );
+      }
     }
 
     // Otherwise, insert it after the field
     if (!label) {
-        field.parentNode.insertBefore( message, field.nextSibling );
+      field.parentNode.insertBefore( message, field.nextSibling );
     }
-
-
   }
 
   // Add ARIA role to the field
@@ -106,9 +102,6 @@ var showError = function(field, error) {
   // Show error message
   message.style.display = 'block';
   message.style.visibility = 'visible';
-
-
-
 };
 
 // REMOVE ERROR
@@ -158,39 +151,21 @@ document.addEventListener('submit', function(event) {
   var fields =  event.target.elements;
   var error, hasErrors;
   for (var i = 0; i < fields.length; i++) {
-      error = hasError(fields[i]);
-      if (error) {
-          showError(fields[i], error);
-          if (!hasErrors) {
-              hasErrors = fields[i];
-          }
+    error = hasError(fields[i]);
+    if (error) {
+      showError(fields[i], error);
+      if (!hasErrors) {
+        hasErrors = fields[i];
       }
+    }
   }
 
   // If there are errrors, don't submit form and focus on first element with error
   if (hasErrors) {
-      event.preventDefault();
-      hasErrors.focus();
+    event.preventDefault();
+    hasErrors.focus();
   }
 
   //AJAX PROCESS HERE
 
-
 },false);
-
-
-
-
-
-
-
-  // we must validate the field
-
-  // If there is no error, it should add the "is-valid" BS class to the field
-
-  //  If there is an error, we should get the error and which error
-  // then we need to add "is-invalid" BS class to the field
-  // Then we need to display the error using "invalid-feedback" BS class
-  // Then when correct we need to remove the error
-
-// Need to check all fields on submit
