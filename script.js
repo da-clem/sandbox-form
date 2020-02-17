@@ -12,6 +12,9 @@ var hasError = function (field) {
     field.classList.add('is-valid')
     return
   }
+  if (!validity.valid) {
+    field.classList.remove('is-valid')
+  }
 
   // If required and empty
   if (validity.valueMissing) return "Please fill out this field";
@@ -125,7 +128,6 @@ var removeError = function(field) {
   message.style.visibility = 'hidden';
 };
 
-
 // VALIDATION HANDLER ON BLUR
 document.addEventListener('blur', function (event) {
 
@@ -143,7 +145,6 @@ document.addEventListener('blur', function (event) {
   removeError(event.target)
 
 }, true)
-
 
 // VALIDATION ON SUBMIT
 document.addEventListener('submit', function(event) {
